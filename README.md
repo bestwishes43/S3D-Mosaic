@@ -28,7 +28,7 @@ python main.py
 ```
 
 - For **compared methods**, we only provide the evaluation code (pre‑trained models or inference scripts are included where applicable).
-- For our **proposed S3D‑Mosaic** method, the full pipeline is provided.
+- **📢 The full pipeline of S3D-Mosaic will go live here as soon as our paper gets accepted.**
 
 ---
 
