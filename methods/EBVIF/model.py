@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import numpy
-import utils
 import random
 
 def transform(data, msfa_size=4, spatial_ratio=2):

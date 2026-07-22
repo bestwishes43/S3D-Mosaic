@@ -1,3 +1,4 @@
 *.tiff
 *.bmp
 __pycache__/
+.codebuddy/

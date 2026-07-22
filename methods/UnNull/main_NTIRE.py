@@ -78,4 +78,4 @@ def main_MSFA_NTIRE():
     print(torch.tensor(psnr_list).mean(), torch.tensor(sam_list).mean(), torch.tensor(ssim_list).mean(), torch.tensor(time_list).mean())
 
 if __name__ == '__main__':
-    main_MSFA_ARAD()
+    main_MSFA_NTIRE()

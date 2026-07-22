@@ -1,8 +1,4 @@
 import numpy
-import scipy.io as scio
-import cv2
-import os
-import utils
 from scipy.signal import convolve2d
 
 def PPID(mosaic, MSFA, gamma_flag=False):
@@ -145,26 +141,5 @@ def PPID(mosaic, MSFA, gamma_flag=False):
     # All FLOPs: 883*H*W
     return demosaic_estimate
 
-if __name__=="__main__":
-    hrms = scio.loadmat("../DataSet/CAVE/test/egyptian_statue_ms.mat")["b"]
-
-    hrms_select_bands = hrms[:, :, 12:28]
-
-    MSFA = numpy.array([[0, 1, 2, 3],
-                        [4, 5, 6, 7],
-                        [8, 9, 10, 11],
-                        [12, 13, 14, 15]])
-
-    blur_k = utils.gaussian_kernel(5, 3)
-
-    lrms = utils.blur_downsample(hrms_select_bands, blur_k, scale_factor=2)
-
-    lrms_mosaic = utils.MSFA_filter(lrms, MSFA)
-
-    spe_res = numpy.ones(hrms_select_bands.shape[-1]) / hrms_select_bands.shape[-1]
-    pan = numpy.sum(hrms_select_bands * spe_res, axis=-1, keepdims=True)
-    ppi_avg = numpy.mean(lrms, axis=-1, keepdims=True)
-
-    demosaic_estimate = PPID(lrms_mosaic, MSFA)
 
 

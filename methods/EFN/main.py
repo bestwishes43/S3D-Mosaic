@@ -7,7 +7,7 @@ from torch.utils.data import Subset
 import argparse
 
 from model import Network
-from quality_index import calc_psnr, calc_ssim, calc_sam, calc_ergas
+from project_utils.quality_index import calc_psnr, calc_ssim, calc_sam, calc_ergas
 
 from project_utils.dataloader import CAVEDatasetDC
 
