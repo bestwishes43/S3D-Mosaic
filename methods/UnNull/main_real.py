@@ -1,4 +1,5 @@
-import os
+import sys, os
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')); sys.path.insert(0, _ROOT)
 os.environ["KMP_DUPLICATE_LIB_OK"]  =  "TRUE"
 import torch
 torch.manual_seed(42)
@@ -15,7 +16,7 @@ def main():
     device_default = 'cuda' if torch.cuda.is_available() else 'cpu'
     dtype_default = torch.float32
     #----------------------- Data Configuration -----------------------#
-    dataset = Specvision('../../datasets/Specvision'); test_set = dataset
+    dataset = Specvision(os.path.join(_ROOT, 'datasets/Specvision')); test_set = dataset
     dataloader = torch.utils.data.DataLoader(test_set, batch_size=1, shuffle=False)
 
     h, w, nC = 1020, 1020, 9

@@ -1,6 +1,5 @@
 import numpy
 import torch
-import utils
 import torch.nn.functional as F
 
 def calc_psnr(hrms, fused):

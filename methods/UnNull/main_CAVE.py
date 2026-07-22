@@ -1,4 +1,5 @@
-import os
+import sys, os
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')); sys.path.insert(0, _ROOT)
 os.environ["KMP_DUPLICATE_LIB_OK"]  =  "TRUE"
 import torch
 torch.manual_seed(42)
@@ -19,7 +20,7 @@ def main_MSFA_CAVE():
     dtype_default = torch.float32
     calculate_ssim = SSIM().to(device_default)
     #----------------------- Data Configuration -----------------------#
-    dataset = CAVE('../../datasets/CAVE/HSI'); test_set = Subset(dataset, [0, 1, 2, 3, 4, 5, 8, 16, 17, 21])
+    dataset = CAVE(os.path.join(_ROOT, 'datasets/CAVE/HSI')); test_set = Subset(dataset, [0, 1, 2, 3, 4, 5, 8, 16, 17, 21])
     dataloader = torch.utils.data.DataLoader(test_set, batch_size=1, shuffle=False)
 
     h, w, nC = 500, 500, 25

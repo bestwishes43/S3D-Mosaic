@@ -1,4 +1,5 @@
-import os
+import sys, os
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')); sys.path.insert(0, _ROOT)
 os.environ["KMP_DUPLICATE_LIB_OK"]  =  "TRUE"
 import torch
 torch.manual_seed(42)
@@ -16,7 +17,7 @@ def main_MSFA_NTIRE():
     dtype_default = torch.float32
     calculate_ssim = SSIM().to(device_default)
     #----------------------- Data Configuration -----------------------#
-    dataset = NTIRE('../../datasets/NTIRE/Valid_spectral_16'); test_set = dataset
+    dataset = NTIRE(os.path.join(_ROOT, 'datasets/NTIRE/Valid_spectral_16')); test_set = dataset
     dataloader = torch.utils.data.DataLoader(test_set, batch_size=1, shuffle=False)
 
     h, w, nC = 480, 512, 16

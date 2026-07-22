@@ -289,4 +289,3 @@ if __name__ == "__main__":
     # Compare results
     print(f"PSNR: {np.abs(psnr_val_our-psnr_val_skimage)}")
     print(f"SSIM: {np.abs(ssim_val_our-ssim_val_skimage)}")
-

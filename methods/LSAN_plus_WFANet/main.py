@@ -1,3 +1,6 @@
+import sys, os
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')); sys.path.insert(0, _ROOT)
+
 import torch
 torch.manual_seed(42)
 from torch.utils.data import Subset
@@ -41,7 +44,7 @@ def main():
     demosaic_ckpt_path = "./checkpoint/best_994.pth"
     pan_shap_ckpt_path = "./checkpoint/best_46.pth"
 
-    dataset = CAVEDatasetDC('../../datasets/CAVE/HSI'); test_set = Subset(dataset, range(20, 32))
+    dataset = CAVEDatasetDC(os.path.join(_ROOT, 'datasets/CAVE/HSI')); test_set = Subset(dataset, range(20, 32))
     dataloader = torch.utils.data.DataLoader(test_set, batch_size=1, shuffle=False)
 
     MSFA = torch.tensor([[0, 1, 2, 3],

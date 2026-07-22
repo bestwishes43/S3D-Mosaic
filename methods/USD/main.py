@@ -1,3 +1,6 @@
+import sys, os
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')); sys.path.insert(0, _ROOT)
+
 import torch
 torch.manual_seed(42)
 from torch.utils.data import Subset
@@ -23,10 +26,10 @@ def main(msfa_size=5):
 
     if msfa_size == 5:
         ckpt_path = "./checkpoint/CAVE_best_10860.pth"
-        dataset = CAVE('../../datasets/CAVE/HSI'); test_set = Subset(dataset, [0, 1, 2, 3, 4, 5, 8, 16, 17, 21])
+        dataset = CAVE(os.path.join(_ROOT, 'datasets/CAVE/HSI')); test_set = Subset(dataset, [0, 1, 2, 3, 4, 5, 8, 16, 17, 21])
     else:
         ckpt_path = "./checkpoint/ARAD_best_297.pth"
-        dataset = NTIRE('../../datasets/NTIRE/test_spectral_16'); test_set = dataset
+        dataset = NTIRE(os.path.join(_ROOT, 'datasets/NTIRE/test_spectral_16')); test_set = dataset
 
     C, H, W = dataset.data_shape
     H = H // msfa_size * msfa_size
